@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool follow;
     public Vector3 direction;
     private CharacterController control;
+    public bool[] whichGun;
 
 
     // Start is called before the first frame update
@@ -44,7 +45,7 @@ public class PlayerController : MonoBehaviour
     {
         if (recoil)
         {
-            control.Move(direction.normalized * 5f + new Vector3(0.0f, (direction.y + 1f) * 50f, 0.0f) * Time.deltaTime);
+            control.Move(direction.normalized * 5f + new Vector3(0.0f, (direction.y) * 5f, 0.0f) * Time.deltaTime);
             follow = true;
         }
         else
