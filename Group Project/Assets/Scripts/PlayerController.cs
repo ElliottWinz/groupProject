@@ -8,10 +8,14 @@ public class PlayerController : MonoBehaviour
 {
     public GameObject player;
     public GameObject root;
+    public GameObject gun1;
+    public GameObject gun2;
+    public GameObject gun3;
     public bool follow;
     public Vector3 direction;
     private CharacterController control;
     public bool[] whichGun;
+    public float recoilForce = 0;
 
 
     // Start is called before the first frame update
@@ -38,6 +42,40 @@ public class PlayerController : MonoBehaviour
             Vector3 direction = (player.transform.position - root.transform.position);
             Recoil(true, direction);
         }
+
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            whichGun[0] = true;
+            whichGun[1] = false;
+            whichGun[2] = false;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            whichGun[1] = true;
+            whichGun[0] = false;
+            whichGun[2] = false;
+        }
+        if(Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            whichGun[2] = true;
+            whichGun[1] = false;
+            whichGun[0] = false;
+        }
+        if(whichGun[0])
+        {
+            gun1.SetActive(true);
+            recoilForce = 3f;
+        }else{gun1.SetActive(false);}
+        if(whichGun[1])
+        {
+            gun2.SetActive(true);
+            recoilForce = 6f;
+        }else{gun2.SetActive(false);}
+        if(whichGun[2])
+        {
+            gun3.SetActive(true);
+            recoilForce = 9f;
+        }else{gun3.SetActive(false);}
     }
 
 
@@ -45,7 +83,7 @@ public class PlayerController : MonoBehaviour
     {
         if (recoil)
         {
-            control.Move(direction.normalized * 5f + new Vector3(0.0f, (direction.y) * 5f, 0.0f) * Time.deltaTime);
+            control.Move(direction.normalized * recoilForce + new Vector3(0.0f, (direction.y) * recoilForce, 0.0f) * Time.deltaTime);
             follow = true;
         }
         else
