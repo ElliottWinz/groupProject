@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Physics;
 
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public GameObject gun1;
     public GameObject gun2;
     public GameObject gun3;
+    public GameObject truck;
     public bool follow;
     public Vector3 direction;
     private CharacterController control;
@@ -76,6 +78,8 @@ public class PlayerController : MonoBehaviour
             gun3.SetActive(true);
             recoilForce = 9f;
         }else{gun3.SetActive(false);}
+
+        if(Physics.OverlapBox())
     }
 
 
@@ -91,9 +95,6 @@ public class PlayerController : MonoBehaviour
             follow = false;
         }
     }
-
-
-
 
 }
 
