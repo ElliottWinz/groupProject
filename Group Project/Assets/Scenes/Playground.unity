@@ -9779,6 +9779,19 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   whichGun: 000000
   recoilForce: 0
+--- !u!65 &135756641613574985
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1906358933}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.1964011, z: 1}
+  m_Center: {x: 0, y: 0.9923051, z: 0}
 --- !u!1 &2114283753834967212
 GameObject:
   m_ObjectHideFlags: 0

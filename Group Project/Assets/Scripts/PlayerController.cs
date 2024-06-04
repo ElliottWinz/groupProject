@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Physics;
 
 
 public class PlayerController : MonoBehaviour
@@ -79,20 +78,36 @@ public class PlayerController : MonoBehaviour
             recoilForce = 9f;
         }else{gun3.SetActive(false);}
 
-        if(Physics.OverlapBox())
-    }
+        // Needed chat gpt's help for this part
 
-
-    void Recoil(bool recoil, Vector3 direction)
-    {
-        if (recoil)
+        // Assuming you have a collider called 'colliderToCheck'
+        bool isColliderInArray = false;
+        Collider[] colliders = Physics.OverlapBox(new Vector3(18.62f, 0.0114f, 11.8f), new Vector3(10, 10, 10), new Quaternion(0, 0, 0, 0));
+        foreach (Collider collider in colliders)
         {
-            control.Move(direction.normalized * recoilForce + new Vector3(0.0f, (direction.y) * recoilForce, 0.0f) * Time.deltaTime);
-            follow = true;
+            if (collider == GetComponent<BoxCollider>())
+            {
+                isColliderInArray = true;
+                break; // Exit the loop once a matching collider is found
+            }
         }
-        else
+
+        if (isColliderInArray)
         {
-            follow = false;
+            Debug.Log("hi");
+        }
+
+        void Recoil(bool recoil, Vector3 direction)
+        {
+            if (recoil)
+            {
+                control.Move(direction.normalized * recoilForce + new Vector3(0.0f, (direction.y) * recoilForce, 0.0f) * Time.deltaTime);
+                follow = true;
+            }
+            else
+            {
+                follow = false;
+            }
         }
     }
 
