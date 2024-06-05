@@ -23,7 +23,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
 
-
         follow = true;
         control = GetComponent<CharacterController>();
        
@@ -82,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
         // Assuming you have a collider called 'colliderToCheck'
         bool isColliderInArray = false;
-        Collider[] colliders = Physics.OverlapBox(new Vector3(18.62f, 0.0114f, 11.8f), new Vector3(10, 10, 10), new Quaternion(0, 0, 0, 0));
+        Collider[] colliders = Physics.OverlapBox(new Vector3(18.62f, 0.0114f, 11.8f), new Vector3(4, 10, 6), new Quaternion(0, 0, 0, 0));
         foreach (Collider collider in colliders)
         {
             if (collider == GetComponent<BoxCollider>())
@@ -94,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
         if (isColliderInArray)
         {
-            Debug.Log("hi");
+            transform.position = new Vector3(-37, 0, 11);
         }
 
         void Recoil(bool recoil, Vector3 direction)
