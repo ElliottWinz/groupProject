@@ -96,6 +96,24 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(-37, 0, 11);
         }
 
+        //helicopter
+
+        bool isColliderInArray1 = false;
+        Collider[] colliders1 = Physics.OverlapBox(new Vector3(-122.6f, 0.0f, 14.69f), new Vector3(2, 10, 6), new Quaternion(0, 0, 0, 0));
+        foreach (Collider collider in colliders1)
+        {
+            if (collider == GetComponent<BoxCollider>())
+            {
+                isColliderInArray1 = true;
+                break; // Exit the loop once a matching collider is found
+            }
+        }
+
+        if (isColliderInArray1)
+        {
+            transform.position = new Vector3(0, 0, 0);
+        }
+
         void Recoil(bool recoil, Vector3 direction)
         {
             if (recoil)
